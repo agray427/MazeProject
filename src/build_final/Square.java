@@ -25,16 +25,15 @@ public class Square
 		return String.valueOf(getCode());
 	}
 	
-	public static Square fromCode(char code)
+	public static Square fromChar(char ch)
 	{
-		switch(code)
+		if (ch == CODE_START || ch == CODE_END || ch == CODE_OPEN || ch == CODE_WALL)
 		{
-		case CODE_START:
-		case CODE_END:
-		case CODE_OPEN:
-			return new Square(code);
-		default:
-			return new Square(CODE_WALL);
+			return new Square(ch);
+		}
+		else
+		{
+			throw new IllegalArgumentException("Character must be one of the following: o * . #");
 		}
 	}
 }
